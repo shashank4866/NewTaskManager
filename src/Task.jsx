@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 
 function Task() {
+
+    
     // state for tasks
     // tasks are stored in local storage
     const [tasks,settasks]=useState(()=>{
         return JSON.parse(localStorage.getItem("task")||"[]")
     });
+
+
     // state for input field
     const [task,setTask]=useState("");
+
+
     // state for loading
     // to show loading animation when adding a task
     const [loding,setLoading]=useState(false);
@@ -58,9 +64,10 @@ function Task() {
     // it also shows a confirmation dialog before deleting
     function deleteitem(id){
         
-        let filterd=tasks.filter((ele)=>ele.id!=id)
+        
         if(window.confirm("are you sure!"))
             {
+                let filterd=tasks.filter((ele)=>ele.id!=id)
                 settasks(filterd)
             }
             else{
