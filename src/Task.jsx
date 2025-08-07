@@ -45,17 +45,14 @@ function Task() {
             setLoading(true);
             setTimeout(()=>{
                  settasks([
-                ...tasks,
-                {id:Date.now(),name:task.trim(),status:"pending",isEditing:false}
+                {id:crypto.randomUUID(),name:task.trim(),status:"pending",isEditing:false},...tasks
                 
             ])
               setLoading(false)
             },1000);
-            
-           
             setTask("");
         }
-        
+    
     }
 
     // function to delete a task
@@ -63,7 +60,6 @@ function Task() {
     // and update the tasks state
     // it also shows a confirmation dialog before deleting
     function deleteitem(id){
-        
         
         if(window.confirm("are you sure!"))
             {
@@ -143,13 +139,13 @@ function Task() {
                             <button onClick={()=>{statusSetter(ele.id)}}>{ele.status}</button>
                             <button onClick={()=>{deleteitem(ele.id)}}>delete</button>
                             <button onClick={()=>{edit(ele.id)}}>edit</button>
-                    </>
+                            </>
                         )
                     }
                     
                     </li>
             })
-            :<h1>no elemets found</h1>
+            :<h1>No Tasks Found</h1>
         }
     </ul>
     </div>
